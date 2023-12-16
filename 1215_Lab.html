@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Comparison</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #result-container {
+      margin-top: 20px;
+      padding: 10px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    #lightblue {
+      background-color: lightblue;
+    }
+
+    #orange {
+      background-color: orange;
+    }
+
+    #lightyellow {
+      background-color: lightyellow;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- First Input -->
+  <label for="firstInput">1st Input:</label>
+  <input type="number" id="firstInput">
+
+  <br>
+
+  <!-- Second Input -->
+  <label for="secondInput">2nd Input:</label>
+  <input type="number" id="secondInput">
+
+  <br>
+
+  <!-- First Input Button -->
+  <button onclick="showInput(1)">Click to Show 1st Input</button>
+
+  <!-- Second Input Button -->
+  <button onclick="showInput(2)">Click to Show 2nd Input</button>
+
+  <!-- Result Container -->
+  <div id="result-container"></div>
+
+  <!-- Script -->
+  <script>
+    function showInput(inputNumber) {
+      const inputValue = parseFloat(document.getElementById(`firstInput`).value);
+      const inputValue2 = parseFloat(document.getElementById(`secondInput`).value);
+      const resultContainer = document.getElementById('result-container');
+
+      if (inputNumber === 1) {
+        alert(`First Input: ${inputValue}`);
+      } else if (inputNumber === 2) {
+        alert(`Second Input: ${inputValue2}`);
+      }
+    }
+
+    function compareInputs() {
+      const inputValue = parseFloat(document.getElementById(`firstInput`).value);
+      const inputValue2 = parseFloat(document.getElementById(`secondInput`).value);
+      const resultContainer = document.getElementById('result-container');
+
+      if (!isNaN(inputValue) && !isNaN(inputValue2)) {
+        if (inputValue > inputValue2) {
+          resultContainer.innerText = `(${inputValue} > ${inputValue2})`;
+          resultContainer.style.backgroundColor = 'lightblue';
+          alert('firstInput>secondInput.');
+        } else if (inputValue2 > inputValue) {
+          resultContainer.innerText = `(${inputValue2} > ${inputValue})`;
+          resultContainer.style.backgroundColor = 'orange';
+          alert('secondInput > firstInput.');
+        } else {
+          resultContainer.innerText = `(${inputValue2} == ${inputValue})`;
+          resultContainer.style.backgroundColor = 'lightyellow';
+          alert('secondInput == firstInput.');
+        }
+      } else {
+        alert('Please enter valid numbers for both inputs.');
+      }
+    }
+  </script>
+
+  <br>
+
+  <!-- Compare Inputs Button -->
+  <button onclick="compareInputs()">Compare Inputs</button>
+
+</body>
+</html>
